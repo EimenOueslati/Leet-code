@@ -22,5 +22,15 @@ public class MyCircularQueue {
         
     }
     
+    public boolean isEmpty() {
+        return isEmpt;
+        
+    }
+    
+    public boolean isFull() {
+        if(((tail + 1) % size) == head)
+        {
+            return true;
+        }
     
 }
