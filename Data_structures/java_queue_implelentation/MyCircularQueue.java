@@ -1,0 +1,26 @@
+public class MyCircularQueue {
+    private int head;
+    private int tail;
+    private int size;
+    private boolean isEmpt;
+    private int[] queue;
+
+    public MyCircularQueue(int k) {
+        head = 0;
+        tail = 0;
+        isEmpt = true;
+        if(k > 1000){
+            size = 1000;
+            queue = new int[1000];
+        }else if(k < 1){
+            size = 100;
+            queue = new int[100];
+        }else{
+            size = k;
+            queue = new int[k];
+        }
+        
+    }
+    
+    
+}
