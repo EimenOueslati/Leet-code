@@ -51,6 +51,23 @@ public class MyCircularQueue {
         }
         
     }
+
+    public int Front() {
+        if(isEmpty()){
+            return -1;
+        }else{
+            return queue[head];
+        }
+    }
+    
+    public int Rear() {
+        if(isEmpty()){
+            return -1;
+        }else{
+            return queue[tail];
+        }
+    }
+    
     
     public boolean isEmpty() {
         return isEmpt;
