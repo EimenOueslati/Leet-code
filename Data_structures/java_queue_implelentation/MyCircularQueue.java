@@ -36,6 +36,21 @@ public class MyCircularQueue {
         return true;
                 
     }
+
+    public boolean deQueue() {
+        if(isEmpty()){
+            return false;
+        }
+        else if(head == tail)
+        {
+            isEmpt = true;
+            return true;
+        }else{
+            head = (head + 1) % size;
+            return true;
+        }
+        
+    }
     
     public boolean isEmpty() {
         return isEmpt;
