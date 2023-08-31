@@ -61,7 +61,7 @@ public class MyCircularQueue {
         if(isEmpty()){ //Make sure that the queue is not empty
             return false;
         }
-        else if(head == tail) //In case we only have one elementa in the queue
+        else if(head == tail) //In case we only have one element in the queue
         {
             isEmpt = true; //Set the queue state to empty
             return true;
@@ -98,7 +98,7 @@ public class MyCircularQueue {
 
     //This function returns true if the queue is full and false otherwise 
     public boolean isFull() {
-        if(((tail + 1) % size) == head)
+        if(!isEmpty() && ((tail + 1) % size) == head)
         {
             return true;
         }
