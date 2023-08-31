@@ -21,6 +21,21 @@ public class MyCircularQueue {
         }
         
     }
+
+    public boolean enQueue(int value) {
+        if (isFull() || value < 0 || value > 1000){
+            return false;
+        }
+        else if(head == tail && isEmpty()){
+            queue[head] = value;
+            isEmpt = false;
+            return true;
+        }
+        tail = (tail + 1) % size;
+        queue[tail] = value;
+        return true;
+                
+    }
     
     public boolean isEmpty() {
         return isEmpt;
