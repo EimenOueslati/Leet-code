@@ -1,3 +1,5 @@
+//expected output : [true,true,true,false,3,true,true,true,4]
+
 public class Main {
     public static void main(String[] args){
         MyCircularQueue myCircularQueue = new MyCircularQueue(3);
