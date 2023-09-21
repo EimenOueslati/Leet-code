@@ -1,147 +1,67 @@
 package Algorithms.BFS.Open_the_lock;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class openTheLock {
     public int openLock(String[] deadEnds, String target)
     {
-        int steps = 0;
-        if(target.equals("0000"))
+        HashSet<String> dead_ends = new HashSet<>(Arrays.asList(deadEnds));
+        if(dead_ends.contains("0000"))
         {
-            return steps;
-        }
-
-       if(( steps = getStepsRight(deadEnds, target)) < 0)
-       {
-       }else{
-        return getStepsLeft(deadEnds, target);
-       }
-       return -1;
-
-    }
-    
-
-    private int getStepsRight(String[] deadStrings, String targetString)
-    {
-        String[] chars = targetString.split("");
-        int[] ints = new int[4];
-        int i = 0;
-        int steps = 0;
-        for (String c : chars) {
-            ints[i] = Integer.parseInt(c);
-            i++;
-        }
-        String current[] = new String[]{"0","0","0","0"};
-        for(i = 0; i < 4; i++)
-        {
-            int stepsToAdd = getShortestPath(ints, i, deadStrings, ints[i], current);
-            if(stepsToAdd < 0)
-            {
-                return -1;
-            }
-            current[i] = Integer.toString(ints[i]);
-            steps = steps + stepsToAdd;
-        }
-
-        return steps;
-    }
-
-    private int getStepsLeft(String[] deadStrings, String targetString)
-    {
-        String[] chars = targetString.split("");
-        int[] ints = new int[4];
-        int i = 0;
-        int steps = 0;
-        for (String c : chars) {
-            ints[i] = Integer.parseInt(c);
-            i++;
-        }
-        String current[] = new String[]{"0","0","0","0"};
-        for(i = 3; i > -1; i--)
-        {
-            int stepsToAdd = getShortestPath(ints, i, deadStrings, ints[i], current);
-            if(stepsToAdd < 0)
-            {
-                return -1;
-            }
-            current[i] = Integer.toString(ints[i]);
-            steps = steps + stepsToAdd;
-        }
-
-        return steps;
-    }
-
-    private int getShortestPath(int[] list, int index, String[] deads, int target, String[] current){
-        if(list[index] == target)
-        {
-            return 0;
-        }
-
-        int up = 0;
-        int down = 0;
-        int ret;
-        for(int i = 0; i < 10; i++)
-        {
-            if(list[index] == 9)
-            {
-                list[index] = 0;
-            }else
-            {
-                list[index]++;
-            }
-
-            current[index] = Integer.toString(list[index]);
-            if(containsArr(deads, current))
-            {
-                up = 100;
-                break;
-            }
-
-
-            up++;
-            if(list[index] == target) break;
-
-        }
-
-        for(int i = 0; i < 10; i++)
-        {
-            if(list[index] == 0)
-            {
-                list[index] = 9;
-            }else
-            {
-                list[index]--;
-            }
-
-            current[index] = Integer.toString(list[index]);
-            if(containsArr(deads, current))
-            {
-                down = 100;
-                break;
-            }
-
-            down++;
-            if(list[index] == target) break;
-
-
-        }
-
-        if(up == 100 && up == 100 ){
             return -1;
-        }else{
-            ret = (up < down) ? up : down;
-            return ret;
-        } 
-    }
-
-
-    private boolean containsArr(String[] search, String[] arr)
-    {
-        String code = String.join("", arr);
-        for (String string : search) {
-            if(string.equals(code))
-            {
-                return true;
-            }
         }
-        return false;
+        HashSet<String> visited = new HashSet<>();
+        visited.add("0000");
+
+        Queue<String> q = new LinkedList();
+        q.add("0000");
+        int level = 0;
+
+        while(!q.isEmpty())
+        {
+            int size = q.size();
+            while(size > 0)
+            {
+                String current_comb = q.poll();
+                visited.add(current_comb);
+                if(current_comb.equals(target))
+                {
+                    return level;
+                }
+                if(dead_ends.contains(current_comb))
+                {
+                    size--;
+                    continue;
+                }
+                StringBuilder sb = new StringBuilder(current_comb);
+                for(int i = 0; i < 4; i++)
+                {
+                    char current_position = sb.charAt(i);
+                    String sb1 = sb.substring(0, i) + (current_position == '9' ? 0 : current_position - '0' + 1) + sb.substring(i+1); 
+                    String sb2 = sb.substring(0, i) + (current_position == '0' ? 9 : current_position - '0' - 1) + sb.substring(i+1);
+
+                    if(!dead_ends.contains(sb1) && !visited.contains(sb1))
+                    {
+                        q.offer(sb1);
+                        visited.add(sb1);
+                    }
+                     if(!dead_ends.contains(sb2) && !visited.contains(sb2))
+                    {
+                        q.offer(sb2);
+                        visited.add(sb2);
+                    }
+                }
+
+                size--;
+            }
+            level++;
+        }
+
+
+
+        return -1;
     }
 }
