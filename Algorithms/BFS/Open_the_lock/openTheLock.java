@@ -24,18 +24,21 @@ import java.util.Queue;
 public class openTheLock {
     public int openLock(String[] deadEnds, String target)
     {
-        HashSet<String> dead_ends = new HashSet<>(Arrays.asList(deadEnds));
+        // Initialize the hashset for the dead ends and visited lists for constant lookups
+        HashSet<String> dead_ends = new HashSet<>(Arrays.asList(deadEnds)); 
         if(dead_ends.contains("0000"))
         {
             return -1;
         }
         HashSet<String> visited = new HashSet<>();
-        visited.add("0000");
+        visited.add("0000");//add the intial node to the visited hashset
 
+        //Initilize the BFS queue and put the first element in
         Queue<String> q = new LinkedList();
         q.add("0000");
-        int level = 0;
+        int level = 0;//Variable to keep track of how many steps we have been through so far
 
+        //Start the BFS loop
         while(!q.isEmpty())
         {
             int size = q.size();
@@ -43,16 +46,22 @@ public class openTheLock {
             {
                 String current_comb = q.poll();
                 visited.add(current_comb);
+                
+                //return the steps if the cirrent combination is the target
                 if(current_comb.equals(target))
                 {
                     return level;
                 }
+
+                //skip a this loop iteration if the current combination is in the dead ends hashset
                 if(dead_ends.contains(current_comb))
                 {
                     size--;
                     continue;
                 }
-                StringBuilder sb = new StringBuilder(current_comb);
+                StringBuilder sb = new StringBuilder(current_comb); //use a string builder to be able to modify the combination string
+
+                //Loop throught the characters of the string and check every possible change we can make (change each digit by +1 and -1)
                 for(int i = 0; i < 4; i++)
                 {
                     char current_position = sb.charAt(i);
@@ -73,11 +82,11 @@ public class openTheLock {
 
                 size--;
             }
-            level++;
+            level++; //increment the level with each iteration
         }
 
 
-
+        //return -1 in case no solution was found
         return -1;
     }
 }
