@@ -4,26 +4,27 @@ public class Solution {
     public char findTheDifference(String s, String t) {
         StringBuilder sb1 = new StringBuilder(s);
         StringBuilder sb2 = new StringBuilder(t);
-        int sb1len = sb1.length();
-        int sb2len = sb2.length();
-
-        for(int i = 0; i < sb1len; i++)
+        int[] Sarr = new int[26];
+        int[] Tarr = new int[26];
+        
+        for(int i = 0; i < s.length(); i++)
         {
-            for(int j = 0; j < sb2len; j++)
-            {
-                if(sb1.charAt(i) == (sb2.charAt(j)))
-                {
-                    sb2 = sb2.deleteCharAt(j);
-                    j = sb2len;
-                }
-            }
-            sb2len--;
+           Sarr[sb1.charAt(i) - 97]++;
         }
-        
-        
-        
-        
-        return sb2.charAt(0);
+
+        for(int i = 0; i < t.length(); i++)
+        {
+           Tarr[sb2.charAt(i) - 97]++;
+        }
+
+        for(int i = 0; i < 26; i++)
+        {
+            if(Sarr[i] != Tarr[i])
+            {
+                return (char)(i + 97);
+            }
+        }
+        return 'a';
     }
 
 }
