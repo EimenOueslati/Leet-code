@@ -14,7 +14,7 @@ public class Solution {
     public int  numSquares(int n)
     {
         int steps = 1; // variable to keep track of how many steps we curent have
-        Queue<Integer> q = new LinkedList(); // A queue for the BFS search
+        Queue<Integer> q = new LinkedList<>(); // A queue for the BFS search
         
         // Get the largest perfect square that is smaller than the target int
         Double i = Math.floor(Math.sqrt(n));
