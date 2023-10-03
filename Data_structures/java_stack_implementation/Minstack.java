@@ -13,4 +13,30 @@ public class Minstack {
         size = 0;
         min = Integer.MAX_VALUE;
     }
+
+    public void push(int val) {
+        stack.add(val);
+        if(val < min)
+        {
+            min = val;
+        }
+        min_stack.add(min);
+        size++;
+    }
+
+    public void pop() {
+        if(size > 0)
+        {
+            stack.remove(size-1);
+            min_stack.remove(size-1);
+            size--;
+            if(size > 0)
+            {
+                min = min_stack.get(size-1);
+            }else{
+                min = Integer.MAX_VALUE;
+            }
+        }
+    }
+
 }
