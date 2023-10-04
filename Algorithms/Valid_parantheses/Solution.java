@@ -21,32 +21,32 @@ import java.util.Stack;
 
  */
 public class Solution {
-
-  Map<Character, Character> map = new HashMap<>();
-  Stack<Character> st= new Stack<>();
   public boolean isValid(String s)
   {
-    map.put(')', '(');
-    map.put(']', '[');
-    map.put('}', '{');
-    Character[] arr = new Character[]{')',']','}'};
-    List<Character> charl = Arrays.asList(arr);
-    StringBuilder sb = new StringBuilder(s);
-    for (int i = 0; i < sb.length(); i++)
+    if(s.length() % 2 != 0) return false;
+    char[] arr = new char[s.length()];
+    int top = -1;
+    for (char c : s.toCharArray())
     {
-
-        char curr = sb.charAt(i);
-        if(charl.contains(curr))
+        if(c == '(' || c == '[' || c == '{')
         {
-            if(st.isEmpty()) return false;
-            if(st.peek() != map.get(curr)) return false;
-            st.pop();
-        }else
+            arr[++top] = c;
+        }else if(top == -1)
         {
-            st.add(curr);
+           return false;   
+        }else if(c == ')' && arr[top--] != '(')
+        {
+            return false;
+        }else if(c == ']' && arr[top--] != '[')
+        {
+            return false;
+        }else if(c == '}' && arr[top--] != '{')
+        {
+            return false;
         }
     }
-    return st.isEmpty();
+    return top == -1;
   }
-   
+
+  
 }
