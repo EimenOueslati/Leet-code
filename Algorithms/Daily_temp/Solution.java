@@ -3,27 +3,43 @@ package Algorithms.Daily_temp;
 import java.util.Stack;
 
 public class Solution {
-    public int[] dailyTemperatures(int[] temperatures) {
+public int[]  dailyTemperatures(int[] temperatures){
         int [] answer = new int[temperatures.length];
-
-        for (int i = 0; i < temperatures.length; i++)
+        Stack<int[]> st = new Stack<>();
+        int[] tempInd = new int[] {temperatures[temperatures.length - 1], temperatures.length-1};
+        
+        for(int i = temperatures.length - 1; i >= 0; i --)
         {
-            int period = 0;
-            for(int j = i + 1; j < temperatures.length; j++)
+            while(true)
             {
-                if(temperatures[i] < temperatures[j])
+                if(!st.isEmpty())
                 {
-                    answer[i] = ++period;
+                    if(st.peek()[0] <= temperatures[i])
+                    {
+                        st.pop();
+                    }else{
+                        answer[i] = st.peek()[1] - i;
+                        tempInd = new int[]{temperatures[i],i};
+                        //tempInd[0] = temperatures[i];
+                        //tempInd[1] = i;
+                        st.add(tempInd); 
+                        break;
+                    }
+                }else{
+                    answer[i] = 0;
+                    tempInd = new int[]{temperatures[i],i};
+                    //tempInd[0] = temperatures[i];
+                    //tempInd[1] = i;
+                    st.add(tempInd); 
                     break;
                 }
-                period++;
 
             }
-            if(period == 0) answer[i] = 0;
+                
         }
+
+
 
         return answer;
     }
-    
-    
 }
