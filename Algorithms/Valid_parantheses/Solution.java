@@ -2,17 +2,14 @@ package Algorithms.Valid_parantheses;
 
 
 /*
- * This class in the solution for the leetcode proble "Open the lock":
- * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
- * An input string is valid if:
- * Open brackets must be closed by the same type of brackets.
- * Open brackets must be closed in the correct order.
- * Every close bracket has a corresponding open bracket of the same type.
+ * This class in the solution for the leetcode problem "Valid parantheses":
+ * Given an array of integers temperatures represents the daily temperatures, return an array answer 
+ * such that answer[i] is the number of days you have to wait after the ith day to get a warmer temperature.
+ * If there is no future day for which this is possible, keep answer[i] == 0 instead.
  * 
  * Constraints:
- * 1 <= s.length <= 104
- * s consists of parentheses only '()[]{}'.
-
+ *  1 <= temperatures.length <= 105
+ * 30 <= temperatures[i] <= 100
  */
 public class Solution {
   public boolean isValid(String s)
