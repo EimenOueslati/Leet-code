@@ -15,21 +15,24 @@ public class Solution {
     map.put(')', '(');
     map.put(']', '[');
     map.put('}', '{');
-    char[] arr = new char[]{')',']','}'};
-    List<char[]> charl = Arrays.asList(arr);
+    Character[] arr = new Character[]{')',']','}'};
+    List<Character> charl = Arrays.asList(arr);
     StringBuilder sb = new StringBuilder(s);
     for (int i = 0; i < sb.length(); i++)
     {
-        if(charl.contains(sb.charAt(i)))
+
+        char curr = sb.charAt(i);
+        if(charl.contains(curr))
         {
-            if(st.peek() != map.get(sb.charAt(i))) return false;
+            if(st.isEmpty()) return false;
+            if(st.peek() != map.get(curr)) return false;
             st.pop();
         }else
         {
-            st.add(sb.charAt(i));
+            st.add(curr);
         }
     }
     return st.isEmpty();
   }
-    
+   
 }

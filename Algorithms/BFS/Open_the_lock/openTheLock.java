@@ -34,7 +34,7 @@ public class openTheLock {
         visited.add("0000");//add the intial node to the visited hashset
 
         //Initilize the BFS queue and put the first element in
-        Queue<String> q = new LinkedList();
+        Queue<String> q = new LinkedList<>();
         q.add("0000");
         int level = 0;//Variable to keep track of how many steps we have been through so far
 
