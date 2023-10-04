@@ -1,11 +1,5 @@
 package Algorithms.Valid_parantheses;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Stack;
-
 
 /*
  * This class in the solution for the leetcode proble "Open the lock":
