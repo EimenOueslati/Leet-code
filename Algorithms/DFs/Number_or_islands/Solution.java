@@ -16,30 +16,32 @@ public class Solution {
                 if(grid[i][j] == '1' && !visited[i][j])
                 {
                     st.add(new int[]{i,j});
+                    islands++;
                     while(!st.isEmpty())
                     {
+                        
                         pos = st.pop();
                         visited[pos[0]][pos[1]] = true;
-                        if(i > 0 && !visited[i-1][j] && grid[i-1][j] == '1')
+                        if(pos[0] > 0 && !visited[pos[0]-1][pos[1]] && grid[pos[0]-1][pos[1]] == '1')
                         {
-                            st.add(new int[]{i-1, j});
+                            st.add(new int[]{pos[0]-1, pos[1]});
                         }
-                        if(j < grid[0].length - 1 && !visited[i][j + 1] && grid[i][j + 1] == '1')
+                        if(pos[1] < grid[0].length - 1 && !visited[pos[0]][pos[1] + 1] && grid[pos[0]][pos[1] + 1] == '1')
                         {
-                            st.add(new int[]{i, j+1});
+                            st.add(new int[]{pos[0], pos[1]+1});
                         }
-                        if(i < grid.length - 1 && !visited[i+1][j] && grid[i+1][j] == '1')
+                        if(pos[0] < grid.length - 1 && !visited[pos[0]+1][pos[1]] && grid[pos[0]+1][pos[1]] == '1')
                         {
-                            st.add(new int[]{i+1, j});
+                            st.add(new int[]{pos[0]+1, pos[1]});
                         }
-                        if(j > 0 && !visited[i][j - 1] && grid[i][j - 1] == '1')
+                        if(pos[1] > 0 && !visited[pos[0]][pos[1] - 1] && grid[pos[0]][pos[1] - 1] == '1')
                         {
-                            st.add(new int[]{i, j-1});
+                            st.add(new int[]{pos[0], pos[1]-1});
                         }
 
 
                     }
-                    islands++;
+                    
 
                 }
             }
