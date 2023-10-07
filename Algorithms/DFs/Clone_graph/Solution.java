@@ -3,6 +3,7 @@ import java.util.HashMap;
 
 public class Solution {
     public Node cloneGraph(Node node) {
+       if(node == null) return null;
        Node root = new Node(node.val);
        HashMap<Node, Node> map = new HashMap<>();
        map.put(node, root);
