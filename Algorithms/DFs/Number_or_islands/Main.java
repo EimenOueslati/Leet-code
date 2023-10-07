@@ -10,7 +10,7 @@ public class Main {
             {'1','1','1','1','0'},
         };
         
-            System.out.println(sol.numIslands(array));
+        System.out.println(sol.numIslands(array));
     }
     
 }
