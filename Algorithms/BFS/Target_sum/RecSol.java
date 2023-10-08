@@ -6,8 +6,12 @@ public class RecSol {
     public int findTargetSumWays(int[] nums, int target) {
         arrlen = nums.length;
         targ = target;
-        if(arrlen == 0) return combinations;
-        if(arrlen == 1) return combinations = (nums[0] == target || -nums[0] == target) ? 1 : 0;
+        int sum = 0;
+        for(int i : nums)
+        {
+            sum += i;
+        }
+        if(sum < Math.abs(target) || (sum + target) % 2 == 1) return 0;
         recTS(0, 0, nums);
         return combinations;
     }
