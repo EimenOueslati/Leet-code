@@ -35,17 +35,6 @@ public class Solution {
                 
             }
         }
-        /*int index = arrlen - 1;
-        int iterations = (int) Math.pow(2, index);
-        for(int j = 0; j < iterations; j++)
-        {
-            curr = q.poll();
-            elem1 = curr + nums[index];
-            elem2 = curr - nums[index];
-            if(elem1 == target) combinations++;
-            if(elem2 == target) combinations++;
-        }
-        */
         return combinations;
     }
 }
