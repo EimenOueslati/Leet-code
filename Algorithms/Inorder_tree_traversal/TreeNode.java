@@ -1,5 +1,5 @@
 package Algorithms.Inorder_tree_traversal;
-
+//* Definition for a binary tree node.
 public class TreeNode {
     int val;
     TreeNode left;
