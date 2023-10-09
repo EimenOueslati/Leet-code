@@ -22,5 +22,21 @@ public class MyStack2 {
         }
 
     }
+
+    public int pop()
+    {
+        if(size > 0) size--;
+        return q.poll();
+    }
+
+    public int top()
+    {
+        return q.peek();
+    }
+
+    public boolean empty()
+    {
+        return size == 0;
+    }
     
 }
