@@ -14,8 +14,8 @@ public class MyStack {
     public void push(int x) {
         if(q1.isEmpty()) q1.add(x);
         else{
-            swap(q1, q2);
             q2.add(x);
+            swap(q1, q2);
             swap(q2, q1);
         }
         
