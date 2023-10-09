@@ -21,6 +21,18 @@ public class MyQueue {
         }
     }
 
+      public int pop() {
+        return st1.pop();
+    }
+    
+    public int peek() {
+        return st1.peek();
+    }
+    
+    public boolean empty() {
+        return st1.isEmpty();
+    }
+
     private void swap(Stack<Integer> from, Stack<Integer> to)
     {   
         while(!from.isEmpty())
