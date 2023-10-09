@@ -10,6 +10,16 @@ public class MyStack {
         q1 = new LinkedList<>();
         q2 = new LinkedList<>();
     }
+
+    public void push(int x) {
+        if(q1.isEmpty()) q1.add(x);
+        else{
+            swap(q1, q2);
+            q2.add(x);
+            swap(q2, q1);
+        }
+        
+    }
     
 
     private void swap(Queue<Integer> from, Queue<Integer> to)
