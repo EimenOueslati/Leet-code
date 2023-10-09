@@ -11,4 +11,12 @@ public class MyStack {
         q2 = new LinkedList<>();
     }
     
+
+    private void swap(Queue<Integer> from, Queue<Integer> to)
+    {
+        while(!from.isEmpty())
+        {
+            to.add(from.poll());
+        }
+    }
 }
