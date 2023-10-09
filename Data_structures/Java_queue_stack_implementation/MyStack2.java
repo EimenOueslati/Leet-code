@@ -16,7 +16,7 @@ public class MyStack2 {
     {
         size++;
         q.add(x);
-        for(int i = 0; i < size; i++)
+        for(int i = 0; i < size - 1; i++)
         {
             q.add(q.poll());
         }
