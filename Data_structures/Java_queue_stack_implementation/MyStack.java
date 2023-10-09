@@ -20,6 +20,18 @@ public class MyStack {
         }
         
     }
+
+    public int pop() {
+        return q1.poll();
+    }
+    
+    public int top() {
+        return q1.peek();
+    }
+    
+    public boolean empty() {
+        return q1.isEmpty();
+    }
     
 
     private void swap(Queue<Integer> from, Queue<Integer> to)
