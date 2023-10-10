@@ -5,74 +5,41 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class Solution {
-    
-    public String decodeString(String s) {
-        StringBuilder str = new StringBuilder(s);
-        Stack<String> charq = new Stack<>();
-        Stack<Integer> intst = new Stack<>();
-        int status = 0;
-        String answer = "";
+    private Stack<Character> st;
+    public String decodeString(String s){
+        st = new Stack<>();
         String ret = "";
-        for(int i = 0; i < s.length(); i++)
+        for(char c : s.toCharArray())
         {
-            if(str.charAt(i) == '[') status++;
-            else if(str.charAt(i) == ']')
+            if(c != ']')
             {
-                status--;
-                int num = intst.pop();
-                String ch = charq.pop() + answer;
+                st.add(c);
+            }else{
                 String temp = "";
-                for(int j = 0; j < num; j++) temp += ch;
-                answer = temp;
-                if(status == 0 && answer.length() != 0)
+                while(!st.isEmpty() && st.peek() != '[')
                 {
-                    ret += answer;
-                    answer = "";
+                    temp = st.pop() + temp;
                 }
-            }else if(Character.isDigit(str.charAt(i)))
-            {
-                    //intst.add(str.charAt(i) - '0');
-                    int k = 0;
-                    String temp = "";
-                    while(i + k < str.length() && Character.isDigit(str.charAt(i + k)))
-                    {
-                        temp = temp + str.charAt(i + k);
-                        k++;
-                    }
-                    i = i+k-1;
-                    intst.add(Integer.parseInt(temp));
-            } 
-            else
-            {
-                if(status == 0)
+                st.pop();
+                String num = "";
+                while(!st.isEmpty() && Character.isDigit(st.peek()))
                 {
-                    int k = 0;
-                    String temp = "";
-                    while(i + k < str.length() && Character.isLetter(str.charAt(i + k)))
-                    {
-                        temp = temp + str.charAt(i + k);
-                        k++;
-                    }
-                    i = i+k-1;
-                    ret += temp;
-
-                }else
+                    num = st.pop() + num;
+                }
+                for(int i = 0; i < Integer.parseInt(num); i++)
                 {
-                    int k = 0;
-                    String temp = "";
-                    while(i < str.length() && Character.isLetter(str.charAt(i + k)))
+                    for(char k : temp.toCharArray())
                     {
-                        temp = temp + str.charAt(i + k);
-                        k++;
+                        st.add(k);
                     }
-                    i = i+k-1;
-                    charq.add(temp);
-                }   
-                
-            } 
+                }
+            }
         }
-
-        return ret;
         
+        while(!st.isEmpty())
+        {
+            ret = st.pop() + ret;
+        }
+        return ret;
     }
 }
