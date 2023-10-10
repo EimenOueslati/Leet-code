@@ -2,7 +2,14 @@ package Algorithms.Flood_fill;
 
 class Solution {
     public int[][] floodFill(int[][] image, int sr, int sc, int color) {
-       if(sr > 0 && image[sr][sc] == image[sr - 1][sc])
+      
+       fill(image, sr, sc, color);
+       return image;
+    }
+
+    private void  fill(int[][] image, int sr, int sc, int color)
+    {
+         if(sr > 0 && image[sr][sc] == image[sr - 1][sc])
        {
             floodFill(image, sr - 1, sc, color);
        }
@@ -20,6 +27,5 @@ class Solution {
        }
 
        image[sr][sc] = color;
-       return image;
     }
 }
