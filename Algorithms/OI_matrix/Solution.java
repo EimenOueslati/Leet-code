@@ -5,39 +5,39 @@ import java.util.Queue;
 
 public class Solution {
     public int[][] updateMatrix(int[][] mat) {
-        int[][] ret = new int[mat.length][mat[0].length];
-        Queue<int[]> st = new LinkedList<>();
-        for(int i = 0; i < mat.length; i++)
-        {
-            for(int j = 0; j < mat[0].length; j++)
-            {
-                int steps = 0;
-                st.clear();
-                st.add(new int[]{i,j});
-                while(!st.isEmpty())
-                {
-                    int size = st.size();
-                    while(size > 0)
-                    {
-                        int x = st.peek()[0];
-                        int y = st.peek()[1];
-                        if(mat[x][y] == 0) 
-                        {
-                            ret[i][j] = steps;
-                            st.clear();
-                            break;
-                        }
-                        if(x > 0) st.add(new int[]{x - 1,y});
-                        if (y < mat[0].length - 1) st.add(new int[]{x ,y + 1});
-                        if(x < mat.length - 1) st.add(new int[]{x + 1, y});
-                        if(y > 0) st.add(new int[]{x,y - 1});
-                        st.poll();
-                        size--;
-                    }
-                    steps++;
-                }
-            }
-        }
-        return ret;
-    } 
+        Queue<int[]> q = new LinkedList<>();
+        boolean[][] visited = new boolean[mat.length][mat[0].length];
+         for(int i = 0; i < mat.length; i++)
+         {
+             for(int j = 0; j < mat[i].length; j++)
+             {
+                 if(mat[i][j] == 0) q.offer(new int[]{i,j,0});
+                 else mat[i][j] = Integer.MAX_VALUE;
+             }
+         }
+         int[][] directions = new int[][]{{-1,0}, {0,1}, {1,0}, {0, -1}};
+         while(!q.isEmpty())
+         {
+             int[] curr = q.poll();
+             int x = curr[0];
+             int y = curr[1];
+             int dis = curr[2];
+             for(int[] dir : directions)
+             {
+                 int hor = x + dir[0];
+                 int vert =  y + dir[1];
+                 if((hor < mat.length && hor >= 0) && (vert < mat[hor].length && vert >= 0) && !visited[hor][vert])
+                 {
+                     if(mat[hor][vert] > dis)
+                     { 
+                         mat[hor][vert] = dis + 1;
+                         visited[hor][vert] = true;
+                         q.offer(new int[]{hor, vert, dis + 1});
+                     }
+                 }
+             }
+         }
+ 
+         return mat;
+     }
 }
