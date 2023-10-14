@@ -17,7 +17,7 @@ public class Solution {
             if(index == 0)
             {
                 int[] arr = new int[digits.length+1];
-                System.arraycopy(digits, 0, arr, 2, digits.length);
+                System.arraycopy(digits, 0, arr, 1, digits.length);
                 arr[1] = 0;
                 arr[0] = 1;
                 return arr;
