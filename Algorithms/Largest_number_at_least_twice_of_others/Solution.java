@@ -9,9 +9,10 @@ public class Solution {
         {
             if(i > nums[largest])
             {
+                currInd++;
                 secondLatgest = largest;
                 largest = currInd;
-                currInd++;
+                
             }
         }
 
