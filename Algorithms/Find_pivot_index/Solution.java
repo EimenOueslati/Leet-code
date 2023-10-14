@@ -12,4 +12,19 @@ public class Solution {
         return ret;
     }
     
+    private int findPiv(int index, int sumLeft, int sumRight, int[] arr)
+    {
+        if(index + 1 < arr.length)
+        {
+            if(sumLeft == sumRight) return index;
+            else return findPiv(index + 1, sumLeft + arr[index + 1], sumRight - arr[index + 1], arr);
+        }else if(sumLeft == arr[index])
+        {
+            return index;
+        }else
+        {
+            return -1;
+        }
+
+    }
 }
