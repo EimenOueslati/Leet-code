@@ -7,7 +7,7 @@ public class Solution {
         {
             sumRight += i;
         }
-        if(sumRight - nums[0] == nums[0]) return 0;
+        if(sumRight - nums[0] == 0) return 0;
         int ret = findPiv(1,nums[0], sumRight - (nums[0] + nums[1]), nums);
         return ret;
     }
@@ -18,7 +18,7 @@ public class Solution {
         {
             if(sumLeft == sumRight) return index;
             else return findPiv(index + 1, sumLeft + arr[index], sumRight - arr[index + 1], arr);
-        }else if(sumLeft == arr[index])
+        }else if(sumLeft == 0)
         {
             return index;
         }else
