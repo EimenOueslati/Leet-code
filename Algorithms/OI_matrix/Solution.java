@@ -3,6 +3,20 @@ package Algorithms.OI_matrix;
 import java.util.LinkedList;
 import java.util.Queue;
 
+
+/*
+ * This class in the solution for the leetcode problem "01 matrix":
+ * Given an m x n binary matrix mat, return the distance of the nearest 0 for each cell.
+ * The distance between two adjacent cells is 1.
+ * 
+ * Constraints:
+ * m == mat.length
+ * n == mat[i].length
+ * 1 <= m, n <= 104
+ * 1 <= m * n <= 104
+ * mat[i][j] is either 0 or 1.
+ * There is at least one 0 in mat.
+ */
 public class Solution {
     public int[][] updateMatrix(int[][] mat) {
         Queue<int[]> q = new LinkedList<>();
