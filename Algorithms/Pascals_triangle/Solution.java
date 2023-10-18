@@ -3,6 +3,16 @@ package Algorithms.Pascals_triangle;
 import java.util.LinkedList;
 import java.util.List;
 
+
+
+/*
+ * This class in the solution for the leetcode problem "Pascal's Triangle":
+ * Given an integer numRows, return the first numRows of Pascal's triangle.
+ * 
+ * 
+ * Constraints:
+ * 1 <= numRows <= 30
+ */
 public class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> answer = new LinkedList<>();
