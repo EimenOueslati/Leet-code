@@ -6,10 +6,8 @@ import java.util.List;
 public class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
         List<Integer> answer = new LinkedList<>();
-        //addSpiral(answer, matrix);
         boolean[][] visited = new boolean[matrix.length][matrix[0].length];
-        answer.add(matrix[0][0]);
-        visited[0][0] = true;
+        addSpiral(0, 0, visited, matrix,answer);
         return answer;
     }
 
