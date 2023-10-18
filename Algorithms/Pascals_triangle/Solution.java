@@ -26,6 +26,6 @@ public class Solution {
         }
         list.get(index - 1).add(1);
         if(index == limit) return;
-        else populateList(list, index++, limit);
+        else populateList(list, index + 1, limit);
     }
 }
