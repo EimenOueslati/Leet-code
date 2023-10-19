@@ -22,15 +22,15 @@ class Solution {
         {
             op2 = op2.insert(0, '0');
         }
-        for(int i = 0; i < op1.length(); i++)
+        for(int i = op1.length() - 1; i >= 0 ; i--)
         {
-            answer.insert(0, addOperation(op1.charAt(i), op2.charAt(i), carryOver));
+            answer.insert(0, addOperation(op1.charAt(i), op2.charAt(i)));
         }
         if(carryOver == '1')  answer.insert(0, '1');
         return answer.toString();
     }
 
-    private char addOperation(char operand1, char operand2, int carryOver)
+    private char addOperation(char operand1, char operand2)
     {
         if(operand1 == '1' && operand2 == '1')
         {  
@@ -60,6 +60,7 @@ class Solution {
                 return '0';
             }else
             {
+                carryOver = '1';
                 return '1';
             }
         }
