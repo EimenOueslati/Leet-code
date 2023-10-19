@@ -1,5 +1,18 @@
 package Algorithms.Longest_common_prefix;
 
+
+
+/*
+ * This class is the solution for the leetcode problem "Longest Common Prefix":
+ * * Write a function to find the longest common prefix string amongst an array of strings
+ * if there is no common prefix, return an empty string ""
+ * 
+ * 
+ * Constraints:
+ * 1 <= strs.length <= 200
+ * 0 <= strs[i].length <= 200
+ * strs[i] consists of only lowercase English letters.
+ */
 class Solution {
     public String longestCommonPrefix(String[] strs) {
         if(strs.length == 1) return strs[0];
