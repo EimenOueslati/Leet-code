@@ -1,5 +1,16 @@
 package Algorithms.Add_binary;
 
+
+/*
+ * This class in the solution for the leetcode problem "Add Binary":
+ * Given two binary strings a and b, return their sum as a binary string.
+ * 
+ * 
+ * Constraints:
+ * 1 <= a.length, b.length <= 10
+ * a and b consist only of '0' or '1' characters
+ * Each string does not contain leading zeros except for the zero itself.
+ */
 class Solution {
     private char carryOver;
     public String addBinary(String a, String b) {
