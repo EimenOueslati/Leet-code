@@ -14,9 +14,14 @@ s[i] is a printable ascii character.
  
 */
 void reverseString(char* s, int sSize){
+    //initialize some poiters to the start and end of the string
     char *start = s;
     char *end = s + sSize - 1;
+
+    //this variable will temporarily hold the value to switch.
     char temp;
+
+    //keep switching the values untill we reach the end.
     while(start < end)
     {
         temp = *start;
