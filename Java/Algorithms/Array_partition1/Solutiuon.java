@@ -8,7 +8,7 @@ public class Solutiuon {
         int answer = 0;
         for(int i = 0; i < nums.length / 2; i += 2)
         {
-            answer += nums[i]
+            answer += nums[i];
         }
         return answer;
     }
