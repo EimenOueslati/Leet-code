@@ -25,3 +25,10 @@ int arrayPairSum(int* nums, int numsSize){
     }
     return sorted;
 }
+
+
+void main()
+{
+    int *test = {1,4,3,2};
+    int answer = arrayPairSum(test, 4);
+}
