@@ -1,10 +1,12 @@
 package Algorithms.Two_sum2;
 
+import java.util.Arrays;
+
 public class Solution {
     public int[] twoSum(int[] numbers, int target) {
         for(int i = 0; i < numbers.length - 1; i++)
         {
-            int temp = binSearch(numbers, numbers[i], target);
+            int temp = binSearch( Arrays.copyOfRange(numbers, 0, 2);, numbers[i], target);
             if( temp != -1) return new int[]{i + 1, temp + 1};
         }
         return null;
