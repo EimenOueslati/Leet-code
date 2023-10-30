@@ -5,7 +5,7 @@ public class Solution {
         for(int i = 0; i < numbers.length - 1; i++)
         {
             int temp = binSearch(numbers, numbers[i], target);
-            if( temp != -1) return new int[]{i, temp};
+            if( temp != -1) return new int[]{i + 1, temp + 1};
         }
         return null;
     }
