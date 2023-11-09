@@ -1,36 +1,18 @@
 package Algorithms.Two_sum2;
 
-import java.util.Arrays;
-
 public class Solution {
     public int[] twoSum(int[] numbers, int target) {
-        for(int i = 0; i < numbers.length - 1; i++)
+        int index1 = 0;
+        int index2 = numbers.length - 1;
+        int result;
+        for(int i = 0; i < numbers.length; i ++)
         {
-            int temp = binSearch( Arrays.copyOfRange(numbers, 0, 2);, numbers[i], target);
-            if( temp != -1) return new int[]{i + 1, temp + 1};
-        }
-        return null;
-    }
+            result = numbers[index1] + numbers[index2] ;
+            if(result == target) return new int[]{index1+1, index2+1};
+            if(result > target) index2--;
+            else index2++;
 
-    private int binSearch(int[] arr, int i, int target)
-    {
-        int start = 0;
-        int end = arr.length-1;
-        int curr = arr.length/2;
-        while(start != end)
-        {
-            if(arr[curr] + i ==  target) return curr;
-            else if(arr[curr] + i < target)
-            {
-                start = curr;
-                curr = (start + end) / 2;
-            }
-            else
-            {
-                end = curr;
-                curr = (start + end) / 2;
-            }
         }
-        return -1;
+       return null;
     }
 }
