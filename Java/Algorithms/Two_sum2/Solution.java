@@ -10,7 +10,7 @@ public class Solution {
             result = numbers[index1] + numbers[index2] ;
             if(result == target) return new int[]{index1+1, index2+1};
             if(result > target) index2--;
-            else index2++;
+            else index1++;
 
         }
        return null;
