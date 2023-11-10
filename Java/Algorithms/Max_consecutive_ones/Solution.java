@@ -20,7 +20,7 @@ public class Solution {
             }
             
         }
-        return currMax;
+        return currMax < currentCount ? currentCount : currMax;
     }
     
 }
