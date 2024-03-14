@@ -1,2 +1,2 @@
 # Leet-code
-This repository contains all my progress and solutions for various exercises from leet code.
+This repository contains all my progress and solutions for various problems from leet code.
