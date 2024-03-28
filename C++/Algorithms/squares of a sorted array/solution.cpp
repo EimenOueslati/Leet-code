@@ -4,6 +4,14 @@
 #include<cmath>
 using namespace std;
 
+/*
+    Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+    
+    Constraints:
+    1 <= nums.length <= 104
+    -104 <= nums[i] <= 104
+    nums is sorted in non-decreasing order.
+*/
 class Solution {
 public:
     vector<int> sortedSquares(vector<int>& nums) {
@@ -11,12 +19,13 @@ public:
         vector<int> squaredNums(size);
         int leftInd = 0;
         int rightInd = size - 1;
+        int currentPos = size - 1;
         while(leftInd <= rightInd){
             if(abs(nums.at(leftInd)) >= abs(nums.at(rightInd))){
-                squaredNums.insert(squaredNums.begin(), pow(nums.at(leftInd), 2));
+                squaredNums[currentPos--] = nums.at(leftInd) * nums.at(leftInd);
                 leftInd++;
             }else{
-                squaredNums.insert(squaredNums.begin(), pow(nums.at(rightInd), 2));
+                squaredNums[currentPos--] = nums.at(rightInd) * nums.at(rightInd);
                 rightInd--;
             }
         }
