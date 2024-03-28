@@ -2,6 +2,12 @@
 #include<vector>
 using namespace std;
 
+/*
+    Given a binary array nums, return the maximum number of consecutive 1's in the array.
+    Constraints:
+    1 <= nums.length <= 10
+    nums[i] is either 0 or 1.
+*/
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
