@@ -16,12 +16,19 @@ using namespace std;
 class Solution {
 public:
     int heightChecker(vector<int>& heights) {
-        vector<int> temp = heights;
-        sort(temp.begin(), temp.end());
         int ret = 0;
+        int currHeight = 0;
+        int freq[101];
+        for(int num : heights){
+            freq[num]++;
+        } 
         for(int i = 0; i < heights.size(); i++){
-            if(heights[i] != temp[i]) ret++;
+            while(freq[currHeight] == 0) currHeight++;
+
+            if(heights[i] != currHeight) ret++;
+            freq[currHeight]--;
         }
+
         return ret;
     }
 };
